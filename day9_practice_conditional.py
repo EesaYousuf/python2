@@ -30,6 +30,8 @@ elif(sub1+sub2+sub3)/3 <40:
         print("you are fail due to total percentage less than 40")
 else:
       print("congatulation! you passed the exam")
+      
+
 
 
 
