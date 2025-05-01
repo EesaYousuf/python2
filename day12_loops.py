@@ -15,8 +15,15 @@
 # while i<6:
 #     print("fairoz")
 #     i=i+1
-fruits=['Banana','watermelon','Grapes','Mangoes']
+"""fruits=['Banana','watermelon','Grapes','Mangoes']
 i=0
 while i<len(fruits):
     print(fruits[i])
-    i=i+1
+    i=i+1 
+    """#for loop
+fruits=['Banana','watermelon','Grapes','Mangoes']
+i=0
+for item in fruits: 
+    print(item)
+    i=i+1 
+  
