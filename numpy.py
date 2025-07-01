@@ -58,3 +58,22 @@ def fill_grid(grid):
             grid[row][col] = backup
         attempts -= 1
     return grid
+    # --- GUI ---
+class SudokuGUI:
+    def __init__(self, master):
+        self.master = master
+        master.title("🧩 Sudoku Solver & Generator")
+        self.cells = {}
+        self.board = generate_puzzle()
+        self.build_grid()
+        self.add_buttons()
+
+    def build_grid(self):
+        for i in range(9):
+            for j in range(9):
+                e = tk.Entry(self.master, width=2, font=('Arial', 18), justify='center')
+                e.grid(row=i, column=j, padx=2, pady=2)
+                if self.board[i][j] != 0:
+                    e.insert(0, str(self.board[i][j]))
+                    e.config(state='disabled')
+                self.cells[(i, j)] = e
