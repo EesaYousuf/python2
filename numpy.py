@@ -96,3 +96,16 @@ class SudokuGUI:
                     self.cells[(i, j)].config(fg="blue")
         else:
             messagebox.showerror("Error", "Invalid puzzle or no solution.")
+ def new_puzzle(self):
+        self.board = generate_puzzle()
+        for i in range(9):
+            for j in range(9):
+                self.cells[(i, j)].config(state='normal')
+                self.cells[(i, j)].delete(0, tk.END)
+                if self.board[i][j] != 0:
+                    self.cells[(i, j)].insert(0, str(self.board[i][j]))
+                    self.cells[(i, j)].config(state='disabled', fg="black")
+if __name__ == "__main__":
+    root = tk.Tk()
+    gui = SudokuGUI(root)
+    root.mainloop()            
