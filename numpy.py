@@ -77,3 +77,22 @@ class SudokuGUI:
                     e.insert(0, str(self.board[i][j]))
                     e.config(state='disabled')
                 self.cells[(i, j)] = e
+  def add_buttons(self):
+        tk.Button(self.master, text="Solve", command=self.solve).grid(row=9, column=0, columnspan=3)
+        tk.Button(self.master, text="New Puzzle", command=self.new_puzzle).grid(row=9, column=3, columnspan=3)
+        tk.Button(self.master, text="Exit", command=self.master.quit).grid(row=9, column=6, columnspan=3)
+
+    def solve(self):
+        for i in range(9):
+            for j in range(9):
+                val = self.cells[(i, j)].get()
+                self.board[i][j] = int(val) if val.isdigit() else 0
+
+        if solve_sudoku(self.board):
+            for i in range(9):
+                for j in range(9):
+                    self.cells[(i, j)].delete(0, tk.END)
+                    self.cells[(i, j)].insert(0, str(self.board[i][j]))
+                    self.cells[(i, j)].config(fg="blue")
+        else:
+            messagebox.showerror("Error", "Invalid puzzle or no solution.")
