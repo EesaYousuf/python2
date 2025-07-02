@@ -49,3 +49,17 @@ def receive():
         thread.start()
 
 receive()
+# Client Code 
+
+import socket
+import threading
+
+# Server settings
+HOST = '127.0.0.1'
+PORT = 55555
+
+nickname = input("Choose your nickname: ")
+
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect((HOST, PORT))
+
