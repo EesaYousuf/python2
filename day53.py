@@ -28,3 +28,22 @@ app.layout = html.Div([
     [Output('covid-graph', 'figure'), Output('live-text', 'children')],
     [Input('country-dropdown', 'value')]
 )
+def update_dashboard(country):
+    url = f"https://disease.sh/v3/covid-19/historical/{country}?lastdays=30"
+    data = requests.get(url).json()
+
+    if 'timeline' not in data:
+        return {}, "No data available."
+
+    timeline = data['timeline']
+    dates = list(timeline['cases'].keys())
+
+    cases = list(timeline['cases'].values())
+    deaths = list(timeline['deaths'].values())
+    recovered = list(timeline['recovered'].values())
+    fig = {
+        'data': [
+            go.Scatter(x=dates, y=cases, name='Cases', line=dict(color='orange')),
+            go.Scatter(x=dates, y=deaths, name='Deaths', line=dict(color='red')),
+            go.Scatter(x=dates, y=recovered, name='Recovered', line=dict(color='green')),
+        ],
