@@ -30,3 +30,13 @@ from sklearn.metrics import accuracy_score
 df = pd.read_csv("malware_dataset.csv")
 X = df.drop("label", axis=1)
 y = df["label"]  # 0 = benign, 1 = malware
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+# Train model
+clf = RandomForestClassifier()
+clf.fit(X_train, y_train)
+
+# Evaluate
+y_pred = clf.predict(X_test)
+print(f"Accuracy: {accuracy_score(y_test, y_pred)*100:.2f}%")
