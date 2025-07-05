@@ -18,3 +18,15 @@ def extract_features(file_path):
             'NumberOfSections': len(pe.sections)
         }
         return features
+        except Exception as e:
+        print(f"Error processing {file_path}: {e}")
+        return None
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# Load extracted features CSV
+df = pd.read_csv("malware_dataset.csv")
+X = df.drop("label", axis=1)
+y = df["label"]  # 0 = benign, 1 = malware
