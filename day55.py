@@ -41,4 +41,16 @@ def fetch_books():
     books = cur.fetchall()
     conn.close()
     return books
+# GUI Class
+class LibraryApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Library Management System")
+        self.root.geometry("800x500")
 
+        self.setup_ui()
+        self.refresh_table()
+
+    def setup_ui(self):
+        self.frame = tk.Frame(self.root)
+        self.frame.pack(pady=10)
