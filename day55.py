@@ -70,3 +70,19 @@ class LibraryApp:
         tk.Label(self.frame, text="Year:").grid(row=1, column=2)
         self.year_entry = tk.Entry(self.frame)
         self.year_entry.grid(row=1, column=3)
+ # Buttons
+        tk.Button(self.frame, text="Add Book", command=self.add_book).grid(row=2, column=1, pady=10)
+        tk.Button(self.frame, text="Delete Selected", command=self.delete_selected).grid(row=2, column=2)
+
+        # Table
+        self.tree = ttk.Treeview(self.root, columns=("ID", "Title", "Author", "Genre", "Year", "Added"), show='headings')
+        for col in self.tree["columns"]:
+            self.tree.heading(col, text=col)
+            self.tree.column(col, anchor=tk.CENTER)
+        self.tree.pack(fill="both", expand=True)
+
+    def refresh_table(self):
+        for row in self.tree.get_children():
+            self.tree.delete(row)
+        for book in fetch_books():
+            self.tree.insert("", "end", values=book)
