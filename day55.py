@@ -54,3 +54,19 @@ class LibraryApp:
     def setup_ui(self):
         self.frame = tk.Frame(self.root)
         self.frame.pack(pady=10)
+ # Entry fields
+        tk.Label(self.frame, text="Title:").grid(row=0, column=0)
+        self.title_entry = tk.Entry(self.frame)
+        self.title_entry.grid(row=0, column=1)
+
+        tk.Label(self.frame, text="Author:").grid(row=0, column=2)
+        self.author_entry = tk.Entry(self.frame)
+        self.author_entry.grid(row=0, column=3)
+
+        tk.Label(self.frame, text="Genre:").grid(row=1, column=0)
+        self.genre_entry = tk.Entry(self.frame)
+        self.genre_entry.grid(row=1, column=1)
+
+        tk.Label(self.frame, text="Year:").grid(row=1, column=2)
+        self.year_entry = tk.Entry(self.frame)
+        self.year_entry.grid(row=1, column=3)
