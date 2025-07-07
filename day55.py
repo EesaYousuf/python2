@@ -114,3 +114,16 @@ class LibraryApp:
         self.author_entry.delete(0, tk.END)
         self.genre_entry.delete(0, tk.END)
         self.year_entry.delete(0, tk.END)
+         def delete_selected(self):
+        selected = self.tree.selection()
+        if not selected:
+            return
+        for item in selected:
+            book_id = self.tree.item(item)['values'][0]
+            delete_book(book_id)
+        self.refresh_table()
+
+if __name__ == '__main__':
+    init_db()
+    root = tk.Tk()
+    app = LibraryApp(root)
