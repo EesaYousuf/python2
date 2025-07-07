@@ -86,3 +86,31 @@ class LibraryApp:
             self.tree.delete(row)
         for book in fetch_books():
             self.tree.insert("", "end", values=book)
+ def refresh_table(self):
+        for row in self.tree.get_children():
+            self.tree.delete(row)
+        for book in fetch_books():
+            self.tree.insert("", "end", values=book)
+
+    def add_book(self):
+        title = self.title_entry.get()
+        author = self.author_entry.get()
+        genre = self.genre_entry.get()
+        year = self.year_entry.get()
+
+        if not title or not author or not year:
+            messagebox.showwarning("Input Error", "Title, Author, and Year are required!")
+            return
+
+        try:
+            int(year)
+        except ValueError:
+            messagebox.showerror("Invalid Input", "Year must be an integer.")
+            return
+
+        add_book(title, author, genre, int(year))
+        self.refresh_table()
+        self.title_entry.delete(0, tk.END)
+        self.author_entry.delete(0, tk.END)
+        self.genre_entry.delete(0, tk.END)
+        self.year_entry.delete(0, tk.END)
