@@ -10,3 +10,9 @@ class Employee(ABC):
     @abstractmethod
     def work(self):
         pass
+def get_salary(self):
+        return self.__salary
+
+    def set_salary(self, amount):
+        if amount > 0:
+            self.__salary = amount
