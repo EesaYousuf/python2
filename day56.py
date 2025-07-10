@@ -24,3 +24,14 @@ def get_salary(self):
     def name(self, new_name):
         if new_name:
             self._name = new_name
+# Developer subclass
+class Developer(Employee):
+    def __init__(self, name, salary, language):
+        super().__init__(name, salary)
+        self.language = language
+
+    def work(self):
+        print(f"{self.name} writes code in {self.language}.")
+
+    def debug(self):
+        print(f"{self.name} is debugging code.")
