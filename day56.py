@@ -57,3 +57,14 @@ if __name__ == "__main__":
     mgr = Manager("Bob", 100000)
 
     mgr.add_team_member(dev)
+print(f"{dev.name}'s salary: ${dev.get_salary()}")
+    dev.debug()
+
+    print(f"\n{mgr.name}'s team: {[member.name for member in mgr.team]}")
+
+    # Demonstrating polymorphism
+    for emp in [dev, mgr]:
+        employee_activity(emp)
+
+    # Using class variable
+    print(f"\nCompany: {Employee.company_name}")
