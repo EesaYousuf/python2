@@ -7,3 +7,6 @@ class Employee(ABC):
     def __init__(self, name, salary):
         self._name = name         # Protected variable
         self.__salary = salary    # Private variable
+    @abstractmethod
+    def work(self):
+        pass
