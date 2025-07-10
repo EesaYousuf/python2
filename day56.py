@@ -35,3 +35,14 @@ class Developer(Employee):
 
     def debug(self):
         print(f"{self.name} is debugging code.")
+# Manager subclass
+class Manager(Employee):
+    def __init__(self, name, salary, team=None):
+        super().__init__(name, salary)
+        self.team = team if team else []
+
+    def work(self):
+        print(f"{self.name} manages the team.")
+
+    def add_team_member(self, member):
+        self.team.append(member)
