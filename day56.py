@@ -16,3 +16,11 @@ def get_salary(self):
     def set_salary(self, amount):
         if amount > 0:
             self.__salary = amount
+ @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, new_name):
+        if new_name:
+            self._name = new_name
