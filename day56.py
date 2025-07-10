@@ -46,3 +46,14 @@ class Manager(Employee):
 
     def add_team_member(self, member):
         self.team.append(member)
+# Polymorphism function
+def employee_activity(emp: Employee):
+    emp.work()
+
+
+# Main program
+if __name__ == "__main__":
+    dev = Developer("Alice", 80000, "Python")
+    mgr = Manager("Bob", 100000)
+
+    mgr.add_team_member(dev)
