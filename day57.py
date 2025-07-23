@@ -81,4 +81,15 @@ class LibraryApp:
             self.tree.heading(col, text=col)
             self.tree.column(col, anchor=tk.CENTER)
         self.tree.pack(fill="both", expand=True)
+         def refresh_table(self):
+        for row in self.tree.get_children():
+            self.tree.delete(row)
+        for book in fetch_books():
+            self.tree.insert("", "end", values=book)
+
+    def add_book(self):
+        title = self.title_entry.get()
+        author = self.author_entry.get()
+        genre = self.genre_entry.get()
+        year = self.year_entry.get() 
    
